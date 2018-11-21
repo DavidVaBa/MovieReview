@@ -12,6 +12,9 @@ import { MovieComponent } from './movie/movie.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { AddMovieComponent } from './admin/add-movie/add-movie.component';
+import { TheMovieDbService } from './services/the-movie-db/the-movie-db.service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -23,14 +26,18 @@ import { SignupComponent } from './signup/signup.component';
     MovieComponent,
     ProfileComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    AddMovieComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(routes),
+    HttpModule
   ],
-  providers: [],
+  providers: [
+    TheMovieDbService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,27 @@
+<div class="background">
+  <div class="card width-75 margin-lr-auto">
+    <div class="card-body">
+      <h5 class="card-title">Add a new Movie</h5>
+      <div class="form-group">
+        <label for="searchAddMovie">Search a Movie</label>
+        <input type="email" class="form-control" id="searchAddMovie" aria-describedby="addMovieHelp" placeholder="Enter movie name" (change)="searchMovies($event)">
+      </div>
+      <div class="media margin-b-15px" *ngFor="let movie of movies">
+        <div class="media-left">
+          <img *ngIf="movie.poster_path != null" class="media-object poster-size" src="{{theMovieDBImagePath + movie.poster_path}}">
+          <img *ngIf="movie.poster_path == null" class="media-object poster-size" src="assets/img/img-not-available.jpg">
+        </div>
+        <div class="media-body padding-10px">
+          <h3 class="media-heading margin-b-0">{{(movie.title == movie.original_title) ? movie.title : movie.title + ' (' + movie.original_title + ')'}}
+            <button type="button" class="btn btn-info mt-a">Add Movie</button>
+          </h3>
+          <span>{{(movie.release_date != '') ? (movie.release_date | date: "MMMM d - yyyy") : 'No release date available'}}</span>
+          <p>{{(movie.overview != '') ? movie.overview : 'No overview available'}}</p>
+        </div>
+      </div>
+      <div *ngIf="movies.length == 0">
+        <h4 class="text-center padding-10px">Not movies found</h4>
+      </div>
+    </div>
+  </div>
+</div>

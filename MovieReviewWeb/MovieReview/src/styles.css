@@ -1,2 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+.background {
+    background-color: #ceebff;
+}
+
+.width-75 {
+    width: 75%;
+}
+
+.margin-b-15px {
+    margin-bottom: 15px;
+}
+
+.margin-b-0 {
+    margin-bottom: 0px;
+}
+
+.margin-lr-auto {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.padding-10px {
+    padding: 10px;
+}

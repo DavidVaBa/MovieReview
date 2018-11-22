@@ -12,7 +12,7 @@ import { MovieComponent } from './movie/movie.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { AddMovieComponent } from './admin/add-movie/add-movie.component';
+import { SearchMovieComponent } from './search-movie/search-movie.component';
 import { TheMovieDbService } from './services/the-movie-db/the-movie-db.service';
 import { HttpModule } from '@angular/http';
 
@@ -27,7 +27,7 @@ import { HttpModule } from '@angular/http';
     ProfileComponent,
     LoginComponent,
     SignupComponent,
-    AddMovieComponent
+    SearchMovieComponent
   ],
   imports: [
     BrowserModule,

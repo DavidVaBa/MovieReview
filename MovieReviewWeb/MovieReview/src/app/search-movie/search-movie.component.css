@@ -1,0 +1,32 @@
+.poster-size {
+    width: 185px;
+    height: 278px;
+}
+
+hr {
+    border: 0;
+    clear:both;
+    display:block;
+    width: 96%;               
+    background-color:black;
+    height: 1px;
+}
+
+@media only screen and (max-width: 700px) {
+    .poster-size {
+        width: 100px;
+        height: 150px;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    span {
+        font-size: .8rem;
+    }
+
+    p {
+        font-size: .9rem;
+    }
+}

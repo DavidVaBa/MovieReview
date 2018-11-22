@@ -2,11 +2,15 @@
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 .background {
-    background-color: #ceebff;
+    background-color: #97C8EB;
 }
 
-.width-75 {
+.global-width {
     width: 75%;
+}
+
+.float-left {
+    float: left;
 }
 
 .margin-b-15px {
@@ -24,4 +28,8 @@
 
 .padding-10px {
     padding: 10px;
+}
+
+.border-none {
+    border: none;
 }

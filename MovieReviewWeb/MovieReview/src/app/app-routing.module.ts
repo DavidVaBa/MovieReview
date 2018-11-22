@@ -6,7 +6,7 @@ import { TopMoviesComponent } from './top-movies/top-movies.component';
 import { MovieComponent } from './movie/movie.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { AddMovieComponent } from './admin/add-movie/add-movie.component';
+import { SearchMovieComponent } from './search-movie/search-movie.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -16,7 +16,7 @@ export const routes: Routes = [
     { path: 'movie', component: MovieComponent },
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
-    { path: 'addmovie', component: AddMovieComponent }
+    { path: 'searchmovie', component: SearchMovieComponent }
 ];
 
 @NgModule({

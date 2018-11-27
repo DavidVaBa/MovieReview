@@ -1,0 +1,50 @@
+<div class="background">
+    <div class="global-width card margin-lr-auto rounded-0 border-0">
+        <div class="row">
+            <div class="col-md-3">
+                <img class="poster-size mx-auto d-block pt-4" src="{{theMovieDBImagePath + movie.poster_path}}">
+            </div>
+            <div class="col-md-8">
+                <h2 class="display-2">{{movie.title}}</h2>
+                <div class="row">
+                    <p class="text-justify col-md-6">{{movie.overview}}</p>
+                    <img class="col-md-6" src="{{theMovieDBImagePath + movie.backdrop_path}}">
+                </div>
+                <p>Genres: <span *ngFor="let genre of movie.genres">{{genre.name}}, </span></p>
+                <div class="row">
+                    <h5 class="display-5 col-md-6">Score: {{movieScore | number: '.0-2'}}</h5>
+                    <button type="button" class="btn btn-info col-md-6" (click)="openReviewModal(reviewTemplate)">Add new review</button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <hr>
+            <h4 class="display-4 pl-2">Reviews</h4>
+            <div class="card" *ngFor="let review of movieReviews">
+                <div class="card-body">
+                    <h5 class="card-title">{{review.userName}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Score: {{review.score}}</h6>
+                    <p class="card-text">{{review.comment}}</p>
+                </div>
+            </div>
+        </div>
+        <ng-template #reviewTemplate>
+            <div class="modal-header">
+                <h5 class="modal-title">New review</h5>
+            </div>
+            <div class="modal-body">
+                <label>Your score:</label>
+                <div class="row">
+                    <input #reviewScoreRange type="range" class="form-control-range slider col-md-10 ml-3" min="0" max="10" value="5" (change)="reviewScore = reviewScoreRange.value">
+                    <label class="col-md-1">{{reviewScore}}</label>
+                </div>
+                <label>Your review:</label>
+                <textarea #reviewCommentText class="form-control" (change)="reviewComment = reviewCommentText.value"></textarea>
+                <div class="float-right mt-2">
+                    <button class="btn btn-success mr-2" (click)="sendReview()">Send Review</button>
+                    <button class="btn btn-danger" (click)="modalRef.hide()">Cancel</button>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>

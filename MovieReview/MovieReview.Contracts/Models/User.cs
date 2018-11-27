@@ -4,9 +4,11 @@ using System.Text;
 
 namespace MovieReview.DL.Models
 {
-    class User
+    public class User
     {
-        Guid Id { get; set; }
-        string Name { get; set; }
+        public Guid Id { get; set; }
+        public string Email { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
     }
 }

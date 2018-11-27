@@ -17,9 +17,13 @@
                 </li>
             </ul>
         </div>
-        <div class="my-2 my-lg-0">
-            <button class="btn btn-primary mr-sm-2" routerLink="/signup">Register</button>
-            <button class="btn btn-primary" routerLink="/login">Log in</button>
+        <div class="my-2 my-lg-0" *ngIf="isLogged()">
+            <button class="btn btn-info mr-sm-2" routerLink="/signup">Register</button>
+            <button class="btn btn-info" routerLink="/login">Log in</button>
+        </div>
+        <div class="my-2 my-lg-0" *ngIf="!isLogged()">
+            <span class="mr-sm-2">Hi {{loggedUserService.getUserName()}}!</span>
+            <button class="btn btn-danger" (click)="logOut()">Log out</button>
         </div>
     </nav>
 </div>

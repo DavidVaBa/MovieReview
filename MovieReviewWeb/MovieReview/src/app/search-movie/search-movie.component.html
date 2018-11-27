@@ -6,7 +6,7 @@
         <label for="searchAddMovie">Search a Movie</label>
         <input type="email" class="form-control" id="searchAddMovie" aria-describedby="addMovieHelp" placeholder="Enter movie name" (change)="searchMovies($event)">
       </div>
-      <div class="media margin-b-15px row" *ngFor="let movie of movies">
+      <div class="media margin-b-15px row" *ngFor="let movie of movies" [routerLink]="['/movie', movie.id]">
         <div class="media-left col-xs-3">
           <img *ngIf="movie.poster_path != null" class="media-object poster-size" src="{{theMovieDBImagePath + movie.poster_path}}">
           <img *ngIf="movie.poster_path == null" class="media-object poster-size" src="assets/img/img-not-available.jpg">

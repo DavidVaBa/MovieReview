@@ -1,3 +1,15 @@
-<p>
-  login works!
-</p>
+<div class="background">
+    <div class="global-width card margin-lr-auto rounded-0 border-0">
+      <form [formGroup]="loginForm" class="margin-lr-auto" (ngSubmit)="login()">
+        <div class="form-group">
+          <label for="loginUsername">Username</label>
+          <input type="text" class="form-control" id="loginUsername" placeholder="Enter an Username" formControlName="txtUsername">
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <input type="password" class="form-control" id="loginPassword" placeholder="Create a Password" formControlName="txtPassword">
+        </div>
+        <button class="d-dlex btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+      </form>
+    </div>
+  </div>

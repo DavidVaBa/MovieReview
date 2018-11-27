@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace MovieReview.DL.Models
 {
     public class Review
     {
-        Guid Id { get; set; }
-        Guid UserId { get; set; }
-        Guid MovieId { get; set; }
-        string Comment { get; set; }
-        decimal Score { get; set; }
+        [Key]
+        public Guid ReviewId { get; set; }
+        public Guid UserId { get; set; }
+        public int MovieId { get; set; }
+        public string Comment { get; set; }
+        public int Score { get; set; }
     }
 }

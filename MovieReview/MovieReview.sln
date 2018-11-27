@@ -1,15 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27703.2035
+VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieReview", "MovieReview\MovieReview.csproj", "{B6B23ABE-8F9F-47C7-BA0E-C35FB269AA60}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9DBDE559-0B0F-4FE7-9207-8D4DC0AD877A} = {9DBDE559-0B0F-4FE7-9207-8D4DC0AD877A}
+		{4B36D75D-F819-4E64-B800-3E7B533304D1} = {4B36D75D-F819-4E64-B800-3E7B533304D1}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieReview.BL", "MovieReview.BL\MovieReview.BL.csproj", "{0FE0B829-F2A2-4F97-AB9B-6E79B118BC35}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieReview.DL", "MovieReview.Contracts\MovieReview.DL.csproj", "{9DBDE559-0B0F-4FE7-9207-8D4DC0AD877A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieReview.DB", "MovieReview.DB\MovieReview.DB.csproj", "{4B36D75D-F819-4E64-B800-3E7B533304D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieReview.DB", "MovieReview.DB\MovieReview.DB.csproj", "{4B36D75D-F819-4E64-B800-3E7B533304D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

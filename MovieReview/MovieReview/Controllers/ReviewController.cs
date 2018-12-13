@@ -37,6 +37,25 @@ namespace MovieReview.Controllers
             }
         }
 
+        [HttpDelete]
+        [Route("DeleteReview")]
+        public IActionResult DeleteReview(Guid reviewId)
+        {
+            try
+            {
+                if (_reviewService.DeleteReview(reviewId))
+                {
+                    return this.Ok(new { success = true, message = "Review Deleted" });
+                } else
+                {
+                    return this.Ok(new { success = false, message = "Review not Deleted" });
+                }
+            } catch (Exception e)
+            {
+                return this.Ok(new { success = false, message = e.Message });
+            }
+        }
+
         [HttpGet]
         [Route("GetReviews")]
         public IList<ReviewDTO> GetReviews(int movieId)
@@ -45,10 +64,26 @@ namespace MovieReview.Controllers
         }
 
         [HttpGet]
+        [Route("GetReviewsbyDateRange")]
+        public IList<ReviewDTO> GetReviewsByDateRange(int range)
+        {
+            return _reviewService.GetReviewsbByDateRange(range);
+        }
+
+        [HttpGet]
         [Route("GetMovieScore")]
         public double GetMovieScore (int movieId)
         {
             return _reviewService.GetMovieScore(movieId);
+        }
+
+        [HttpGet]
+        [Route("GetTopMovies")]
+        public dynamic GetTopMovies(string date, double range)
+        {
+            var dateNumbers = date.Split('-');
+            DateTime dateTime = new DateTime(Int32.Parse(dateNumbers[0]), Int32.Parse(dateNumbers[1]), Int32.Parse(dateNumbers[2]));
+            return _reviewService.GetTopMovies(dateTime, range);
         }
     }
 }

@@ -6,6 +6,7 @@ import { Constants } from '../shared/classes/Constants';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ReviewService } from '../services/review/review.service';
 import { NewReview } from '../shared/models/NewReview';
+import { LoggedUserService } from '../services/account/logged-user.service';
 
 @Component({
     selector: 'app-movie',
@@ -22,13 +23,15 @@ export class MovieComponent implements OnInit {
     reviewScore = 5;
     reviewComment = '';
     modalRef: BsModalRef;
+    infoLoaded = false;
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private theMovieDbService: TheMovieDbService,
         private modalService: BsModalService,
-        private reviewService: ReviewService
+        private reviewService: ReviewService,
+        private loggedUserService: LoggedUserService,
     ) {}
 
     ngOnInit() {
@@ -47,6 +50,7 @@ export class MovieComponent implements OnInit {
                     scoreSum += review.score;
                 });
                 this.movieScore = scoreSum / this.movieReviews.length;
+                this.infoLoaded = true;
             }
         );
     }
@@ -68,6 +72,19 @@ export class MovieComponent implements OnInit {
             (response) => {
                 if (response.success) {
                     this.modalRef.hide();
+                    location.reload();
+                }
+            }
+        );
+    }
+
+    deleteReview(reviewId: string) {
+        this.reviewService.DeleteReview(reviewId).subscribe(
+            (response) => {
+                if (response.success) {
+                    location.reload();
+                } else {
+                    alert(response.message);
                 }
             }
         );

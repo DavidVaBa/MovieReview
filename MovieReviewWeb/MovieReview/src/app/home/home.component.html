@@ -1,20 +1,36 @@
 <div class="background">
     <div class="global-width card margin-lr-auto rounded-0 border-0">
-        <div class="row">
+        <div class="row" *ngIf="infoLoaded">
             <div class="col-md-3">
                 <div class="card rounded-0">
                     <div class="card-header">New Releases</div>
                     <div class="list-group">
-                        <div *ngFor="let movie of nowPlayingmovies; let i = index" class="list-group-item" [routerLink]="['/movie', movie.id]">
+                        <div *ngFor="let movie of nowPlayingmovies" class="list-group-item" [routerLink]="['/movie', movie.id]">
                             <img class="poster-size float-left align-middle" src="{{theMovieDBImagePath + movie.poster_path}}">
                             <div class="align-middle">
                                 <span class="pl-2 d-flex text-truncate font-weight-bold">{{movie.title}}</span>
                                 <small class="pl-2 text-muted">{{movie.release_date | date: "dd-MM-yyyy"}}</small><br>
-                                <small class="pl-2">Rating: {{movie.score}}</small>
+                                <small class="pl-2">Rating: {{(movie.score >= 0) ? (movie.score | number: '.0-2') : movie.score}}</small>
                             </div>
                         </div>
                         <div class="list-group-item text-center align-middle">
                             <a href="">See more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card rounded-0">
+                    <div class="card-header">Latest Reviews</div>
+                    <div class="list-group">
+                        <div *ngFor="let review of latestReviews" class="list-group-item">
+                            <img class="poster-size float-left align-middle" src="{{theMovieDBImagePath + review.movie.poster_path}}">
+                            <div class="align-middle">
+                                <span class="pl-2 d-flex text-truncate font-weight-bold" [routerLink]="['/movie', review.movie.id]">{{review.movie.title}} - {{review.score}}
+                                    <small class="text-muted mt-1 ml-1">by {{review.userName}}</small>
+                                </span>
+                                <span class="pl-2 d-flex">{{review.comment}}</span>
+                            </div>
                         </div>
                     </div>
                 </div>

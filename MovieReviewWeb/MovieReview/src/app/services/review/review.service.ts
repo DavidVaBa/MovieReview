@@ -23,8 +23,20 @@ export class ReviewService {
       .catch((error: any) => Observable.throw(error || 'Serve error'));
   }
 
+  DeleteReview(reviewId: string): Observable<any> {
+    return this.http.delete(Constants.movieReviewAPIURL + 'Review/DeleteReview?reviewId=' + reviewId, Constants.options)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error || 'Serve error'));
+  }
+
   GetReviews(movieId: number): Observable<any> {
     return this.http.get(Constants.movieReviewAPIURL + 'Review/GetReviews?movieId=' + movieId, Constants.options)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error || 'Serve error'));
+  }
+
+  GetReviewsByRange(range: number): Observable<any> {
+    return this.http.get(Constants.movieReviewAPIURL + 'Review/GetReviewsbyDateRange?range=' + range, Constants.options)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error || 'Serve error'));
   }

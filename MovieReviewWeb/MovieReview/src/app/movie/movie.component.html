@@ -1,6 +1,6 @@
 <div class="background">
     <div class="global-width card margin-lr-auto rounded-0 border-0">
-        <div class="row">
+        <div class="row" *ngIf="infoLoaded">
             <div class="col-md-3">
                 <img class="poster-size mx-auto d-block pt-4" src="{{theMovieDBImagePath + movie.poster_path}}">
             </div>
@@ -22,7 +22,11 @@
             <h4 class="display-4 pl-2">Reviews</h4>
             <div class="card" *ngFor="let review of movieReviews">
                 <div class="card-body">
-                    <h5 class="card-title">{{review.userName}}</h5>
+                    <h5 class="card-title">{{review.userName}}
+                        <small> ({{review.date | date: 'MMMM dd, yyyy'}})</small>
+                        <button class="btn btn-outline-danger btn-sm ml-3" (click)="deleteReview(review.reviewId)"
+                            *ngIf="review.userName == loggedUserService.getUserName()">Delete Review</button>
+                    </h5>
                     <h6 class="card-subtitle mb-2 text-muted">Score: {{review.score}}</h6>
                     <p class="card-text">{{review.comment}}</p>
                 </div>
